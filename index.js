@@ -94,7 +94,7 @@ contributionsCard.innerHTML = contributionDisplay;
 
 
 const CardDisplay = `
-${reducedGamesData.pledged.toLocaleString('en-US')}
+$${reducedGamesData.pledged.toLocaleString('en-US')}
 `;
 // grab the amount raised card, then use reduce() to find the total amount raised
 const raisedCard = document.getElementById("total-raised");
