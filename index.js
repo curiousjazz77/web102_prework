@@ -25,31 +25,6 @@ function deleteChildElements(parent) {
 // grab the element with the id games-container
 const gamesContainer = document.getElementById("games-container");
 
-// create a function that adds all data from the games array to the page
-function addGamesToPage(games) {
-
-    // loop over each item in the data
-
-
-        // create a new div element, which will become the game card
-
-
-        // add the class game-card to the list
-
-
-        // set the inner HTML using a template literal to display some info 
-        // about each game
-        // TIP: if your images are not displaying, make sure there is space
-        // between the end of the src attribute and the end of the tag ("/>")
-
-
-        // append the game to the games-container
-
-}
-
-// call the function we just defined using the correct variable
-// later, we'll call this function using a different list of games
-
 
 /*************************************************************************************
  * Challenge 4: Create the summary statistics at the top of the page displaying the
@@ -62,6 +37,42 @@ const contributionsCard = document.getElementById("num-contributions");
 
 // use reduce() to count the number of total contributions by summing the backers
 
+	 // create a function that adds all data from the games array to the page
+function addGamesToPage(games) {
+
+    // loop over each item in the data
+    for (let i=0; i< games.length; i++) { //for const game of games
+        const game = games[i]
+        // create a new div element, which will become the game card
+        const gameCard = document.createElement("div");
+
+        // add the class game-card to the list
+        gameCard.classList.add("game-card"); // gameCard.className = "game-card";
+
+        // set the inner HTML using a template literal to display some info 
+        // about each game
+        // TIP: if your images are not displaying, make sure there is space
+        // between the end of the src attribute and the end of the tag ("/>")
+        const display = `
+        <div class = "game-img"> 
+        <img src="${game.img}" alt="${game.name} Image" width="300" height="150" />
+            <h3>Name: ${game.name}</h3>
+            <p>Description: ${game.description}</p>
+            <p>Goal: $${game.goal}</p>
+            <p>Pledged: $${game.pledged}</p>
+            <p>Backers: ${game.backers}</p>
+        </div>
+        `;
+        gameCard.innerHTML = display;
+
+        // append the game to the games-container
+        gamesContainer.appendChild(gameCard);
+    }
+}
+
+// call the function we just defined using the correct variable
+// later, we'll call this function using a different list of games
+addGamesToPage(GAMES_JSON);
 
 // set the inner HTML using a template literal and toLocaleString to get a number with commas
 
