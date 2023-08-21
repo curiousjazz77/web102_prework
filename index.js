@@ -25,16 +25,6 @@ function deleteChildElements(parent) {
 // grab the element with the id games-container
 const gamesContainer = document.getElementById("games-container");
 
-
-/*************************************************************************************
- * Challenge 4: Create the summary statistics at the top of the page displaying the
- * total number of contributions, amount donated, and number of games on the site.
- * Skills used: arrow functions, reduce, template literals
-*/
-
-// grab the contributions card element
-const contributionsCard = document.getElementById("num-contributions");
-
 // use reduce() to count the number of total contributions by summing the backers
 
 	 // create a function that adds all data from the games array to the page
@@ -74,17 +64,50 @@ function addGamesToPage(games) {
 // later, we'll call this function using a different list of games
 addGamesToPage(GAMES_JSON);
 
+
+/*************************************************************************************
+ * Challenge 4: Create the summary statistics at the top of the page displaying the
+ * total number of contributions, amount donated, and number of games on the site.
+ * Skills used: arrow functions, reduce, template literals
+*/
+
+// grab the contributions card element
+const contributionsCard = document.getElementById("num-contributions");
+
 // set the inner HTML using a template literal and toLocaleString to get a number with commas
+const reducedGamesData = GAMES_JSON.reduce((acc, curr) => {
+    return {
+        pledged: acc.pledged + curr.pledged,
+        backers: acc.backers + curr.backers,
+        count: acc.count + 1
+    };
+  }, {
+    pledged: 0,
+    backers: 0,
+    count: 0
+  });
+  
+const contributionDisplay = `
+    <p>${reducedGamesData.backers.toLocaleString('en-US')}</p>
+    `;
+contributionsCard.innerHTML = contributionDisplay;
 
 
+const CardDisplay = `
+${reducedGamesData.pledged.toLocaleString('en-US')}
+`;
 // grab the amount raised card, then use reduce() to find the total amount raised
 const raisedCard = document.getElementById("total-raised");
+raisedCard.innerHTML = CardDisplay;
 
 // set inner HTML using template literal
 
-
+const numGames = `
+${reducedGamesData.count}
+`;
 // grab number of games card and set its inner HTML
 const gamesCard = document.getElementById("num-games");
+gamesCard.innerHTML = numGames;
 
 
 /*************************************************************************************
