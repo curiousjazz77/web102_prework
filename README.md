@@ -1,6 +1,7 @@
-# WEB102 Prework - *Name of App Here*
+# WEB102 Prework - *Sea Monster Crowdfunding*
 
-Submitted by: **Your Name Here**
+Submitted by: **curiousjazz77**
+![AppScreenShot](https://github.com/curiousjazz77/web102_prework/assets/10506008/ad462354-7fe7-472a-ae33-9ab3226a4ccb)
 
 **Name of your app** is a website for the company Sea Monster Crowdfunding that displays information about the games they have funded.
 
